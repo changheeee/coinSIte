@@ -1,0 +1,82 @@
+.coinChartWrapper {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 50px;
+  background-color: #fff;
+
+  .coinListWrapper {
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+    .coinListLabelContainer {
+      padding: 18px 23px;
+      background-color: #fafafa;
+      font-size: 12px;
+      font-weight: 600; //semibold
+    }
+    .coinListContainer {
+      padding: 13px 23px;
+      background-color: #fff;
+      font-size: 14px;
+      font-weight: 500; //medium
+    }
+
+    .coinListLabelContainer,
+    .coinListContainer {
+      position: relative;
+      width: 100%;
+      display: flex;
+
+      border-bottom: 1px solid #eee;
+
+      > li {
+        display: flex;
+        color: #555;
+
+        & > span {
+          color: #999;
+        }
+      }
+      .coinItem {
+        position: absolute;
+        padding: 13px 0;
+        height: 100%;
+        top: 0;
+        left: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+
+        > .coinImg {
+          width: auto;
+          height: 14px;
+        }
+      }
+      .coinTitle {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+      }
+      .coinTradeInfo {
+        width: 13%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .kimpRate {
+          color: #00a99d;
+        }
+        .positive {
+          color: #f75457;
+        }
+        .negative {
+          color: #4386f9;
+        }
+      }
+    }
+  }
+}

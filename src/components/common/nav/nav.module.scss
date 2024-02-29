@@ -1,0 +1,52 @@
+.navWrapper {
+  z-index: 9999;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.navBar {
+  border-bottom: 1px solid #d9d9d9;
+  background-color: white;
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+  height: 70px;
+  font-size: 14px;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+
+  .menuItems {
+    display: flex;
+    gap: 25px;
+    margin-left: 50px;
+    font-weight: medium;
+  }
+}
+
+.authLinks,
+.userInfo {
+  display: flex;
+  gap: 20px;
+}
+
+.contentSection {
+  position: relative;
+  width: 100%;
+}
+
+.chatToggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}

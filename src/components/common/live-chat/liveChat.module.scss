@@ -1,0 +1,153 @@
+.chatContainer {
+  position: fixed;
+  right: 10px;
+  top: 150px;
+  width: 300px;
+  height: 520px;
+  background-color: white;
+  border: 1px solid #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.chatContent {
+  padding-top: 23px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 50px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.headerLeft {
+  font-size: 12px;
+  color: #999;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.headerRight {
+  font-size: 12px;
+  color: #999;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  //   gap: 3px;
+}
+
+.headerTitle {
+  font-size: 18px;
+  color: #555;
+  font-weight: 600;
+}
+
+.userCount {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  color: #999;
+  font-weight: normal;
+}
+
+.userCountIcon {
+  height: 10px;
+}
+
+.chatArea {
+  display: grid;
+  gap: 10px;
+  height: calc(100% - 50px);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  overflow-y: auto;
+
+  // Hide scrollbar for Webkit browsers
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Hide scrollbar for Firefox
+  scrollbar-width: none;
+
+  // For IE and Edge
+  -ms-overflow-style: none;
+}
+
+.chatMessage {
+  display: flex;
+  flex-direction: column;
+
+  b {
+    font-size: 12px;
+    color: #555;
+    font-weight: 500;
+  }
+}
+
+.myMessageContainer {
+  justify-self: flex-end;
+}
+
+.messageContent,
+.myMessageContent {
+  display: flex;
+  align-items: end;
+  gap: 5px;
+}
+
+.messageText,
+.myMessageText {
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.messageText {
+  background-color: #f5f5f5;
+}
+
+.myMessageText {
+  background-color: #00a99d;
+  color: white;
+}
+
+.messageTime,
+.myMessageTime {
+  font-size: 12px;
+  color: #999;
+  padding-bottom: 3px;
+}
+
+.myMessageContainer {
+  justify-content: end;
+}
+
+.messageInputArea {
+  width: 100%;
+  height: 50px;
+  background-color: #f9f9f9;
+  border-radius: 0 0 15px 15px;
+  display: flex;
+  gap: 13px;
+  padding: 10px 15px;
+}
+
+.messageInput {
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.sendIcon {
+  width: 24px;
+}
