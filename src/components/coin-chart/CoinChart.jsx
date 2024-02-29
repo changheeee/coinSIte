@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import style from "./coinChart.module.scss";
 import ExchangeInfo from "./_components/ExchangeInfo";
@@ -13,11 +13,12 @@ function RateDisplay({ rate }) {
 }
 
 export default function CoinChart() {
-  const [coins, setCoins] = useState([]);
+  const [coins, setCoins] = useState([]); //전역 상태로 관리해서 다른 컴포넌트에서 쓸수 있게
   // const [coinPrices, setCoinPrices] = useState({});
 
   const randomRate = Math.random() * (Math.random() > 0.5 ? 1 : -1);
   const numericRandomRate = parseFloat(randomRate * 100).toFixed(2);
+  const ref = useRef(null); // coinListLabelContainer에 대한 참조
 
   // const fetchCoinData = async () => {
   //   const endPoint = `https://api.upbit.com/v1/market/all?isDetails=true`;
@@ -74,11 +75,41 @@ export default function CoinChart() {
   //   }
   // }, [coins]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const labelContainer = ref.current;
+      if (labelContainer) {
+        // 1000px 이상 스크롤되었는지 확인
+        if (window.scrollY > 1000) {
+          // 고정 스타일 적용
+          labelContainer.style.position = "fixed";
+          labelContainer.style.top = "97px";
+          labelContainer.style.width = "100%";
+          labelContainer.style.maxWidth = "1280px";
+          labelContainer.style.zIndex = "1000";
+          labelContainer.style.borderBottom = "none";
+        } else {
+          // 기본 스타일로 복원
+          labelContainer.style.position = "static";
+          // 기타 스타일 복원이 필요하다면 여기에 추가
+        }
+      }
+    };
+
+    // 스크롤 이벤트 리스너 등록
+    window.addEventListener("scroll", handleScroll);
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className={style.coinChartWrapper}>
       <ExchangeInfo />
       <div className={style.coinListWrapper}>
-        <ul className={style.coinListLabelContainer}>
+        <ul className={style.coinListLabelContainer} ref={ref}>
           <li className={style.coinTitle}>가상자산명</li>
           <li className={style.coinTradeInfo}>현재가</li>
           <li className={style.coinTradeInfo}>김프</li>
@@ -104,7 +135,7 @@ export default function CoinChart() {
             <li className={style.coinTradeInfo}>
               {/* <strong>{"66,860,000"}원</strong>
               <span>{"66,860,000"}원</span> */}
-              <strong>{coin.current_price}원</strong>
+              <strong>{coin.current_price.toLocaleString("ko-KR")} 원</strong>
               <span>{"66,860,000"}원</span>
             </li>
             <li className={style.coinTradeInfo}>

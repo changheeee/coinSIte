@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./realTimeBTC.module.scss";
 import Chart from "./chart/Chart";
+import TradingWidget from "./chart/TradingWidget";
 
 export default function RealTimeBTC() {
   const [selectedCoin, setSelectedCoin] = useState("BTC");
@@ -30,7 +31,8 @@ export default function RealTimeBTC() {
         <option value="ETC">이더리움 클래식</option>
       </select>
       <div className={style.chartContainer}>
-        <Chart coin={selectedCoin} />
+        {/* <Chart coin={selectedCoin} /> */}
+        <TradingWidget coin={selectedCoin} />
       </div>
     </div>
   );
